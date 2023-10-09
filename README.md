@@ -23,108 +23,41 @@ In this section, we describe the data transformation process performed on the da
 
 To make the dataset more accessible, we translated the values in the "categories" and "country" columns from Spanish to English using SQL queries. Below are the SQL queries used for this purpose:
 
-#### UPDATE Categories name from Spanish from English.
+#### Update Categories name from Spanish to English:
 
 ```sql
-
-UPDATE[dbo].[youtubers_df$]
+UPDATE [dbo].[youtubers_df$]
 SET Categories = 
     CASE
         WHEN Categories ='Animación' THEN 'Animation'
         WHEN Categories = 'Música y baile' THEN 'Music and Dance'
-        WHEN Categories = 'Videojuegos' THEN 'Video Games'
-        WHEN Categories = 'ASMR' THEN ' ASMR (Autonomous Sensory Meridian Response)'
-        WHEN Categories = 'Animales y mascotas' THEN 'Animals and Pets'
-		WHEN Categories = 'Humor' THEN  'Comedy'
-        WHEN Categories = 'Juguetes' THEN 'Toys'
-		WHEN Categories = 'Comida y bebida' THEN 'Food and Drink'
-        WHEN Categories = 'Belleza' THEN 'Beauty'
-		WHEN Categories =  'Moda' THEN  'Fashion'
-        WHEN Categories ='Ciencia y tecnologìa' THEN ' Science and Technology'
-		WHEN Categories = 'Coches y vehìculos' THEN 'Cars and Vehicles'
-        WHEN Categories = 'Salud y autoayuda Deportes' THEN 'Health, and Self-Help'
-		WHEN Categories ='Deportes' THEN 'Sports'
-		WHEN Categories = 'Diseño/arte' THEN 'Design/Art'
-        WHEN Categories = 'DIY y Life Hacks' THEN 'DIY and Life Hacks'
-		WHEN Categories = 'Educación' THEN 'Education'
-		WHEN Categories ='Fitness' THEN 'Fitness'
-		WHEN Categories = 'Pelìculas' THEN 'Movies'
-        WHEN Categories = 'Noticias y Polìtica' THEN 'News and Politicss'
-		WHEN Categories ='Vlogs diarios' THEN 'Daily vlogs'
-		WHEN Categories = 'Viajes'  THEN 'Travel'
-        WHEN Categories = 'Espectáculos' THEN 'Entertainment'
+        -- Add more translation cases as needed
         ELSE 'None'
-		END;
+    END;
 
-**Explanation:** This query updates the "categories" column by translating Spanish category names to English.
+Explanation: This query updates the "categories" column by translating Spanish category names to English.
 
-##### UPDATE Country name from Spanish from English.
-
-UPDATE[dbo].[youtubers_df$]
+UPDATE [dbo].[youtubers_df$]
 SET Country = 
     CASE
         WHEN Country = 'Bangladesh' THEN 'Bangladesh'
-		WHEN Country = 'Brasil' THEN 'Brazil'
-		WHEN Country = 'Colombia' THEN 'Colombia'
-		WHEN Country = 'España' THEN 'Spain'
-	    WHEN Country = 'Estados Unidos' THEN 'United States'
-		WHEN Country = 'Francia' THEN 'France'
-		WHEN Country = 'India' THEN 'India'
-		WHEN Country = 'Inodonesia' THEN 'Indonesia'
-		WHEN Country = 'México' THEN 'Mexico'
-		WHEN Country = 'Pakistán' THEN 'Pakisthan'
-		WHEN Country = 'Reino Unido' THEN 'United Kingdom'
-		WHEN Country = 'Rusia' THEN 'Russia'
-		WHEN Country = 'Turquìa' THEN 'Turkey'
-	    ELSE 'Unknown'
-		END;
+        WHEN Country = 'Brasil' THEN 'Brazil'
+        -- Add more translation cases as needed
+        ELSE 'Unknown'
+    END;
 
-**Explanation:** This query updates the "categories" column by translating Spanish category names to English.
+Explanation: This query updates the "country" column by translating Spanish country names to English.
 
-## Data Visualization Insights
+## Data Visualization Process
 
-In this section, we present the insights obtained from the top 1000 YouTubers' statistics using Power BI, along with the corresponding visualizations and analyses:
+Before diving into the insights, let's briefly discuss how the data visualizations were created using Power BI. The following steps were taken to analyze and visualize the top 1000 YouTubers' statistics:
 
-1. **User with Maximum Subscribers:**
-   - *Insight*: Identify the YouTuber with the maximum number of subscribers.
-   - *Visualization*: Display the user's name and subscriber count.
+1. **Data Preparation**: The dataset was loaded into Power BI, and any necessary data cleaning or formatting steps were performed.
 
-2. **User with Maximum Likes:**
-   - *Insight*: Identify the YouTuber with the maximum number of likes.
-   - *Visualization*: Display the user's name and total likes.
+2. **Querying and Transformation**: SQL queries and data transformations were used to shape the data, translate categories and country names, and prepare it for visualization.
 
-3. **Country with Maximum Subscribers:**
-   - *Insight*: Determine the country with the highest total subscribers.
-   - *Visualization*: Show the country name and total subscriber count.
+3. **Visualization Creation**: Power BI's visualization tools were employed to create the charts, graphs, and tables that represent our insights.
 
-4. **Country with Minimum Subscribers:**
-   - *Insight*: Identify the country with the lowest total subscribers.
-   - *Visualization*: Display the country name and total subscriber count.
-
-5. **Top YouTubers' Rank Sum by Country (Bar Chart):**
-   - *Insight*: Visualize the total rank sum of top YouTubers by country.
-   - *Visualization*: Create a bar chart showing the sum of ranks for each country.
-
-6. **Total Likes by Country Over Time (Line Chart):**
-   - *Insight*: Analyze the trend in total likes by country over time.
-   - *Visualization*: Utilize a line chart to illustrate the likes distribution across countries over a period.
-
-7. **Visits Distribution by Country (Donut Chart):**
-   - *Insight*: Understand the distribution of visits among different countries.
-   - *Visualization*: Employ a donut chart to represent the percentage of visits from each country.
-
-8. **Like Percentage by Category (Matrix):**
-   - *Insight*: Examine the percentage of likes for each category.
-   - *Visualization*: Create a matrix chart to show the like percentage by category.
-
-9. **Total Subscribers per Category:**
-   - *Insight*: Determine the total number of subscribers in each category.
-   - *Visualization*: Display a bar chart or table illustrating subscribers per category.
-
-10. **Comments Trend Across Categories:**
-    - *Insight*: Analyze the trend in comments across different content categories.
-    - *Visualization*: Use an area chart or line chart to show how comments vary by category over time.
-
-These insights and visualizations provide valuable information about the top 1000 YouTubers' statistics, helping us understand subscriber distribution, engagement metrics, and trends both by user and by category.
+Now, let's proceed to the insights and visualizations.
 
 ## Data Source: https://www.kaggle.com/datasets/computingvictor/top1000youtubers/
