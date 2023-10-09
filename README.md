@@ -1,1 +1,131 @@
-# top1000_youtubers_insights
+# Top1000_Youtubers_Insights
+
+## Problem Context:
+"The dataset was obtained through data extraction from top YouTube content creators using the HypeAuditor platform. This dataset contains valuable information related to the presence and performance of these content creators on the world's largest video-sharing platform, YouTube. It includes various variables that provide insights into the creators' activities and metrics."
+
+## Dataset variables:
+Below is a detailed description of each of the variables included in the dataset, offering a comprehensive overview of the data's contents and potential analysis opportunities.
+**Rank:** This variable indicates the position or ranking of the streamer on the list of top YouTube streamers. A lower number signifies a higher ranking.
+**Username:** It is the streamer's username on YouTube, allowing for the unique identification of each content creator.
+**Categories:** Represents the categories in which the streamer has tagged their content. Categories can span a wide variety of topics, including gaming, beauty, fashion, travel, comedy, and more.
+**Subscribers:** Indicates the average number of subscribers the streamer's YouTube channel has. This value represents the regular following of content by the audience.
+**Country:** Shows the average country of origin or location of the streamer. This can provide insights into the primary audience of the creator and their base of operations.
+**Visits:** This variable records the average number of accumulated visits to the streamer's channel. It represents the average number of times the creator's videos have been viewed by viewers.
+**Likes:** Indicates the average number of "Likes" received on the streamer's videos. "Likes" are an engagement metric that shows how many viewers appreciate the content.
+**Comments:** Reflects the average number of comments left on the streamer's videos. Comments are an important form of audience interaction and participation.
+**Links:** Provides links or URLs to the streamer's YouTube channels, allowing direct access to their content.
+
+## Data Transformation:
+
+In this section, we describe the data transformation process performed on the dataset.
+
+### Translation of Categories and Country
+
+To make the dataset more accessible, we translated the values in the "categories" and "country" columns from Spanish to English using SQL queries. Below are the SQL queries used for this purpose:
+
+#### UPDATE Categories name from Spanish from English.
+
+```sql
+
+UPDATE[dbo].[youtubers_df$]
+SET Categories = 
+    CASE
+        WHEN Categories ='Animación' THEN 'Animation'
+        WHEN Categories = 'Música y baile' THEN 'Music and Dance'
+        WHEN Categories = 'Videojuegos' THEN 'Video Games'
+        WHEN Categories = 'ASMR' THEN ' ASMR (Autonomous Sensory Meridian Response)'
+        WHEN Categories = 'Animales y mascotas' THEN 'Animals and Pets'
+		WHEN Categories = 'Humor' THEN  'Comedy'
+        WHEN Categories = 'Juguetes' THEN 'Toys'
+		WHEN Categories = 'Comida y bebida' THEN 'Food and Drink'
+        WHEN Categories = 'Belleza' THEN 'Beauty'
+		WHEN Categories =  'Moda' THEN  'Fashion'
+        WHEN Categories ='Ciencia y tecnologìa' THEN ' Science and Technology'
+		WHEN Categories = 'Coches y vehìculos' THEN 'Cars and Vehicles'
+        WHEN Categories = 'Salud y autoayuda Deportes' THEN 'Health, and Self-Help'
+		WHEN Categories ='Deportes' THEN 'Sports'
+		WHEN Categories = 'Diseño/arte' THEN 'Design/Art'
+        WHEN Categories = 'DIY y Life Hacks' THEN 'DIY and Life Hacks'
+		WHEN Categories = 'Educación' THEN 'Education'
+		WHEN Categories ='Fitness' THEN 'Fitness'
+		WHEN Categories = 'Pelìculas' THEN 'Movies'
+        WHEN Categories = 'Noticias y Polìtica' THEN 'News and Politicss'
+		WHEN Categories ='Vlogs diarios' THEN 'Daily vlogs'
+		WHEN Categories = 'Viajes'  THEN 'Travel'
+        WHEN Categories = 'Espectáculos' THEN 'Entertainment'
+        ELSE 'None'
+		END
+
+This query updates the "categories" column by translating Spanish category names to English.
+
+#### UPDATE Country name from Spanish to English.
+
+```sql
+
+UPDATE[dbo].[youtubers_df$]
+SET Country = 
+    CASE
+        WHEN Country = 'Bangladesh' THEN 'Bangladesh'
+		WHEN Country = 'Brasil' THEN 'Brazil'
+		WHEN Country = 'Colombia' THEN 'Colombia'
+		WHEN Country = 'España' THEN 'Spain'
+	    WHEN Country = 'Estados Unidos' THEN 'United States'
+		WHEN Country = 'Francia' THEN 'France'
+		WHEN Country = 'India' THEN 'India'
+		WHEN Country = 'Inodonesia' THEN 'Indonesia'
+		WHEN Country = 'México' THEN 'Mexico'
+		WHEN Country = 'Pakistán' THEN 'Pakisthan'
+		WHEN Country = 'Reino Unido' THEN 'United Kingdom'
+		WHEN Country = 'Rusia' THEN 'Russia'
+		WHEN Country = 'Turquìa' THEN 'Turkey'
+	    ELSE 'Unknown'
+		END
+
+This query updates the "categories" column by translating Spanish category names to English.
+## Data Visualization Insights
+
+In this section, we present the insights obtained from the top 1000 YouTubers' statistics using Power BI, along with the corresponding visualizations and analyses:
+
+1. **User with Maximum Subscribers:**
+   - *Insight*: Identify the YouTuber with the maximum number of subscribers.
+   - *Visualization*: Display the user's name and subscriber count.
+
+2. **User with Maximum Likes:**
+   - *Insight*: Identify the YouTuber with the maximum number of likes.
+   - *Visualization*: Display the user's name and total likes.
+
+3. **Country with Maximum Subscribers:**
+   - *Insight*: Determine the country with the highest total subscribers.
+   - *Visualization*: Show the country name and total subscriber count.
+
+4. **Country with Minimum Subscribers:**
+   - *Insight*: Identify the country with the lowest total subscribers.
+   - *Visualization*: Display the country name and total subscriber count.
+
+5. **Top YouTubers' Rank Sum by Country (Bar Chart):**
+   - *Insight*: Visualize the total rank sum of top YouTubers by country.
+   - *Visualization*: Create a bar chart showing the sum of ranks for each country.
+
+6. **Total Likes by Country Over Time (Line Chart):**
+   - *Insight*: Analyze the trend in total likes by country over time.
+   - *Visualization*: Utilize a line chart to illustrate the likes distribution across countries over a period.
+
+7. **Visits Distribution by Country (Donut Chart):**
+   - *Insight*: Understand the distribution of visits among different countries.
+   - *Visualization*: Employ a donut chart to represent the percentage of visits from each country.
+
+8. **Like Percentage by Category (Matrix):**
+   - *Insight*: Examine the percentage of likes for each category.
+   - *Visualization*: Create a matrix chart to show the like percentage by category.
+
+9. **Total Subscribers per Category:**
+   - *Insight*: Determine the total number of subscribers in each category.
+   - *Visualization*: Display a bar chart or table illustrating subscribers per category.
+
+10. **Comments Trend Across Categories:**
+    - *Insight*: Analyze the trend in comments across different content categories.
+    - *Visualization*: Use an area chart or line chart to show how comments vary by category over time.
+
+These insights and visualizations provide valuable information about the top 1000 YouTubers' statistics, helping us understand subscriber distribution, engagement metrics, and trends both by user and by category.
+
+## Data Source: https://www.kaggle.com/datasets/computingvictor/top1000youtubers/
