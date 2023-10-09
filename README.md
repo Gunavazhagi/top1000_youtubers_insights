@@ -15,9 +15,9 @@ Below is a detailed description of each of the variables included in the dataset
 **Comments:** Reflects the average number of comments left on the streamer's videos. Comments are an important form of audience interaction and participation.
 **Links:** Provides links or URLs to the streamer's YouTube channels, allowing direct access to their content.
 
-## Data Transformation:
+## SQL Data Transformation
 
-In this section, we describe the data transformation process performed on the dataset.
+In this section, we describe the SQL data transformation process performed on the dataset.
 
 ### Translation of Categories and Country
 
@@ -37,7 +37,7 @@ SET Categories =
 
 Explanation: This query updates the "categories" column by translating Spanish category names to English.
 
-UPDATE [dbo].[youtubers_df$]
+**UPDATE [dbo].[youtubers_df$]**
 SET Country = 
     CASE
         WHEN Country = 'Bangladesh' THEN 'Bangladesh'
