@@ -54,13 +54,11 @@ SET Categories =
 		WHEN Categories = 'Viajes'  THEN 'Travel'
         WHEN Categories = 'Espectáculos' THEN 'Entertainment'
         ELSE 'None'
-		END
+		END;
 
-This query updates the "categories" column by translating Spanish category names to English.
+**Explanation:** This query updates the "categories" column by translating Spanish category names to English.
 
-#### UPDATE Country name from Spanish to English.
-
-```sql
+##### UPDATE Country name from Spanish from English.
 
 UPDATE[dbo].[youtubers_df$]
 SET Country = 
@@ -79,9 +77,10 @@ SET Country =
 		WHEN Country = 'Rusia' THEN 'Russia'
 		WHEN Country = 'Turquìa' THEN 'Turkey'
 	    ELSE 'Unknown'
-		END
+		END;
 
-This query updates the "categories" column by translating Spanish category names to English.
+**Explanation:** This query updates the "categories" column by translating Spanish category names to English.
+
 ## Data Visualization Insights
 
 In this section, we present the insights obtained from the top 1000 YouTubers' statistics using Power BI, along with the corresponding visualizations and analyses:
