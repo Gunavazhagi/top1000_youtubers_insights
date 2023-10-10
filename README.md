@@ -14,38 +14,61 @@ Below is a detailed description of each of the variables included in the dataset
 **Likes:** Indicates the average number of "Likes" received on the streamer's videos. "Likes" are an engagement metric that shows how many viewers appreciate the content.
 **Comments:** Reflects the average number of comments left on the streamer's videos. Comments are an important form of audience interaction and participation.
 **Links:** Provides links or URLs to the streamer's YouTube channels, allowing direct access to their content.
+## Data Transformation Process:
+    In this dataset categories and country column are in spanish language. To make the dataset more accessible, we translated the values in the "categories" and "country" columns from Spanish to English using SQL queries. Below are the SQL queries used for this purpose:
+    
+**UPDATE Categories name from Spanish from English**
 
-## SQL Data Transformation
-
-In this section, we describe the SQL data transformation process performed on the dataset.
-
-### Translation of Categories and Country
-
-To make the dataset more accessible, we translated the values in the "categories" and "country" columns from Spanish to English using SQL queries. Below are the SQL queries used for this purpose:
-
-#### Update Categories name from Spanish to English:
-
-```sql
-UPDATE [dbo].[youtubers_df$]
+UPDATE[dbo].[youtubers_df$]
 SET Categories = 
     CASE
         WHEN Categories ='Animación' THEN 'Animation'
         WHEN Categories = 'Música y baile' THEN 'Music and Dance'
-        -- Add more translation cases as needed
+        WHEN Categories = 'Videojuegos' THEN 'Video Games'
+        WHEN Categories = 'ASMR' THEN ' ASMR (Autonomous Sensory Meridian Response)'
+        WHEN Categories = 'Animales y mascotas' THEN 'Animals and Pets'
+		WHEN Categories = 'Humor' THEN  'Comedy'
+        WHEN Categories = 'Juguetes' THEN 'Toys'
+		WHEN Categories = 'Comida y bebida' THEN 'Food and Drink'
+        WHEN Categories = 'Belleza' THEN 'Beauty'
+		WHEN Categories =  'Moda' THEN  'Fashion'
+        WHEN Categories ='Ciencia y tecnologìa' THEN ' Science and Technology'
+		WHEN Categories = 'Coches y vehìculos' THEN 'Cars and Vehicles'
+        WHEN Categories = 'Salud y autoayuda Deportes' THEN 'Health, and Self-Help'
+		WHEN Categories ='Deportes' THEN 'Sports'
+		WHEN Categories = 'Diseño/arte' THEN 'Design/Art'
+        WHEN Categories = 'DIY y Life Hacks' THEN 'DIY and Life Hacks'
+		WHEN Categories = 'Educación' THEN 'Education'
+		WHEN Categories ='Fitness' THEN 'Fitness'
+		WHEN Categories = 'Pelìculas' THEN 'Movies'
+        WHEN Categories = 'Noticias y Polìtica' THEN 'News and Politicss'
+		WHEN Categories ='Vlogs diarios' THEN 'Daily vlogs'
+		WHEN Categories = 'Viajes'  THEN 'Travel'
+        WHEN Categories = 'Espectáculos' THEN 'Entertainment'
         ELSE 'None'
-    END;
+		END
+  Explanation: This query updates the "categories" column by translating Spanish category names to English.
 
-Explanation: This query updates the "categories" column by translating Spanish category names to English.
+  **UPDATE Country name from Spanish to English**
 
-**UPDATE [dbo].[youtubers_df$]**
+UPDATE[dbo].[youtubers_df$]
 SET Country = 
     CASE
         WHEN Country = 'Bangladesh' THEN 'Bangladesh'
-        WHEN Country = 'Brasil' THEN 'Brazil'
-        -- Add more translation cases as needed
-        ELSE 'Unknown'
-    END;
-
+		WHEN Country = 'Brasil' THEN 'Brazil'
+		WHEN Country = 'Colombia' THEN 'Colombia'
+		WHEN Country = 'España' THEN 'Spain'
+	    WHEN Country = 'Estados Unidos' THEN 'United States'
+		WHEN Country = 'Francia' THEN 'France'
+		WHEN Country = 'India' THEN 'India'
+		WHEN Country = 'Inodonesia' THEN 'Indonesia'
+		WHEN Country = 'México' THEN 'Mexico'
+		WHEN Country = 'Pakistán' THEN 'Pakisthan'
+		WHEN Country = 'Reino Unido' THEN 'United Kingdom'
+		WHEN Country = 'Rusia' THEN 'Russia'
+		WHEN Country = 'Turquìa' THEN 'Turkey'
+	    ELSE 'Unknown'
+		END
 Explanation: This query updates the "country" column by translating Spanish country names to English.
 
 ## Data Visualization Process
