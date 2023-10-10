@@ -16,7 +16,9 @@ Below is a detailed description of each of the variables included in the dataset
 **Links:** Provides links or URLs to the streamer's YouTube channels, allowing direct access to their content.
 ## Data Transformation Process:
     In this dataset categories and country column are in spanish language. To make the dataset more accessible, we translated the values in the "categories" and "country" columns from Spanish to English using SQL queries. Below are the SQL queries used for this purpose:
-**UPDATE Categories name from Spanish from English**
+
+```SQL
+---UPDATE Categories name from Spanish from English
 UPDATE[dbo].[youtubers_df$]
 SET Categories = 
     CASE
@@ -46,7 +48,8 @@ SET Categories =
         ELSE 'None'
 		END
   Explanation: This query updates the "categories" column by translating Spanish category names to English.
-  **UPDATE Country name from Spanish to English**
+
+---UPDATE Country name from Spanish to English
 
 UPDATE[dbo].[youtubers_df$]
 SET Country = 
@@ -67,6 +70,8 @@ SET Country =
 	    ELSE 'Unknown'
 		END
 Explanation: This query updates the "country" column by translating Spanish country names to English.
+
+````
 
 ## Data Visualization Process
 
